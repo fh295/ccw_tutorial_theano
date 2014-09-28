@@ -5,42 +5,18 @@
 # broadcastable addition and to compute the max over part of a tensor.
 import numpy as np
 from theano import function
-raise NotImplementedError("TODO: add any other imports you need")
+import theano.tensor as T
 
 def make_tensor(dim):
-    """
-    Returns a new Theano tensor with no broadcastable dimensions.
-    dim: the total number of dimensions of the tensor.
-    (You can use any dtype you like)
-    """
-
-    raise NotImplementedError("TODO: implement this function.")
+    return T.tensor('float64', (False)*dim)()
 
 def broadcasted_add(a, b):
-    """
-    a: a 3D theano tensor
-    b: a 4D theano tensor
-    Returns c, a 4D theano tensor, where
-
-    c[i, j, k, l] = a[l, k, i] + b[i, j, k, l]
-
-    for all i, j, k, l
-    """
-
-    raise NotImplementedError("TODO: implement this function.")
+    a1 = a.dimshuffle((2,'x',1,0))
+    return a1 + b
 
 def partial_max(a):
-    """
-    a: a 4D theano tensor
+    return a.max(axis=(1,2), keepdims=False)
 
-    Returns b, a theano matrix, where
-
-    b[i, j] = max_{k,l} a[i, k, l, j]
-
-    for all i, j
-    """
-
-    raise NotImplementedError("TODO: implement this function.")
 
 if __name__ == "__main__":
     a = make_tensor(3)
