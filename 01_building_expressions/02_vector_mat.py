@@ -5,39 +5,23 @@
 # multiplication and matrix/vector dot product.
 import numpy as np
 from theano import function
-raise NotImplementedError("TODO: add any other imports you need")
+import theano.tensor as T
+
 
 def make_vector():
-    """
-    Returns a new Theano vector.
-    """
+    return T.vector()
 
-    raise NotImplementedError("TODO: implement this function.")
 
 def make_matrix():
-    """
-    Returns a new Theano matrix.
-    """
+    return T.matrix()
 
-    raise NotImplementedError("TODO: implement this function.")
 
 def elemwise_mul(a, b):
-    """
-    a: A theano matrix
-    b: A theano matrix
-    Returns the elementwise product of a and b
-    """
-
-    raise NotImplementedError("TODO: implement this function.")
+    return a*b
 
 def matrix_vector_mul(a, b):
-    """
-    a: A theano matrix
-    b: A theano vector
-    Returns the matrix-vector product of a and b
-    """
+    return T.dot(a,b)
 
-    raise NotImplementedError("TODO: implement this function.")
 
 if __name__ == "__main__":
     a = make_vector()
