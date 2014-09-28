@@ -4,9 +4,12 @@
 # This exercice ask you to compile a Theano functiont and call it to
 # execute "x + y".
 from theano import tensor as T
-raise NotImplementedError("TODO: add any other imports you need")
+from theano import function
+
 
 def evaluate(x, y, expr, x_value, y_value):
+    F = function([x,y],expr)
+    return F(x_value,y_value)
     """
     x: A theano variable
     y: A theano variable
