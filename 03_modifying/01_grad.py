@@ -7,7 +7,7 @@ from theano import tensor as T
 
 
 def grad_sum(x, y, z):
-    return sum(T.grad(z,[x,y]))
+    return sum(T.grad(z,x), T.grad(z,y))
 
 
 
