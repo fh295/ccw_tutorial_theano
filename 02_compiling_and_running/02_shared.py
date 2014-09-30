@@ -12,14 +12,16 @@ def make_shared(shape):
     return shared(np.zeros(shape))
     
 def exchange_shared(a, b):
-    a.set_value = b.get_value
-    b.set_value = a.get_value
+    a.get_value = temp
+    a.set_value(b.get_value)
+    b.set_value(temp)
     
 
 def make_exchange_func(a, b):
-    F = exchange_shared(a,b)
-    f = function([a,b],F)
-    return f
+    D = OrderedDict()
+    D[a] = b
+    D[b] = a
+    return function([],updates=D)
     
 
 
