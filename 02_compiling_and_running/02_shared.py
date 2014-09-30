@@ -4,34 +4,24 @@
 # This exercice make you use shared variable. You must create them and
 # update them by swapping 2 shared variables values.
 import numpy as np
-raise NotImplementedError("TODO: add any other imports you need")
+import theano
+from theano import theano.tensor as T
+from theano import shared, function
 
 def make_shared(shape):
-    """
-    Returns a theano shared variable containing a tensor of the specified
-    shape.
-    You can use any value you want.
-    """
-    raise NotImplementedError("TODO: implement the function")
-
+    return shared(np.zeros(shape))
+    
 def exchange_shared(a, b):
-    """
-    a: a theano shared variable
-    b: a theano shared variable
-    Uses get_value and set_value to swap the values stored in a and b
-    """
-    raise NotImplementedError("TODO: implement the function")
+    a.set_value = b.get_value
+    b.set_value = a.get_value
+    
 
 def make_exchange_func(a, b):
-    """
-    a: a theano shared variable
-    b: a theano shared variable
-    Returns f
-    where f is a theano function, that, when called, swaps the
-    values in a and b
-    f should not return anything
-    """
-    raise NotImplementedError("TODO: implement the function")
+    F = exchange_shared(a,b)
+    f = function([a,b],F)
+    return f
+    
+
 
 
 
