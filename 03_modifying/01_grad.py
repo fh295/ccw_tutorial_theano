@@ -5,16 +5,10 @@
 # compute some derivative.
 from theano import tensor as T
 
+
 def grad_sum(x, y, z):
-    """
-    x: A theano variable
-    y: A theano variable
-    z: A theano expression involving x and y
+    return sum(T.grad(z,[x,y]))
 
-    Returns dz / dx + dz / dy
-    """
-
-    raise NotImplementedError("TODO: implement this function.")
 
 
 if __name__ == "__main__":
