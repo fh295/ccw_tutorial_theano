@@ -5,7 +5,7 @@
 # update them by swapping 2 shared variables values.
 import numpy as np
 import theano
-from theano import theano.tensor as T
+from theano import tensor as T
 from theano import shared, function
 
 def make_shared(shape):
